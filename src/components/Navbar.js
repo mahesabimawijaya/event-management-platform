@@ -16,11 +16,11 @@ export default function Navbar() {
             <div className="relative w-[60px] h-[55px]">
               <Image
                 src={"/navbar/unify-logo.png"}
-                fill
+                fill={true}
                 alt="unify-logo"
                 placeholder="blur"
                 blurDataURL={"/navbar/unify-logo.png"}
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                sizes="60px"
               />
             </div>
             <div className="font-quicksand font-bold text-2xl tracking-wide text-fuchsia-700">
@@ -44,16 +44,16 @@ export default function Navbar() {
             <Image
               id="close"
               src={"/navbar/close.png"}
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              fill={true}
+              sizes="25px"
               alt="close-menu"
             />
           ) : (
             <Image
               id="menu"
               src={"/navbar/menu.png"}
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              fill={true}
+              sizes="25px"
               alt="burger-menu"
             />
           )}

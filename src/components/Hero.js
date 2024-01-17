@@ -5,25 +5,26 @@ export default function Hero() {
   return (
     <>
       <div className="pt-16">
-        <div className="relative w-full h-[600px] 2xl:h-[1000px] z-[-1]">
+        <div className="relative w-full h-screen z-[-1]">
           <Image
             src={"/hero/hero.jpg"}
             className="brightness-50 object-cover"
-            fill
-            unoptimized
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            fill={true}
+            quality={100}
+            priority
+            sizes="100vw"
             alt="hero"
           />
         </div>
-        <div className="absolute top-10 text-white flex flex-col justify-center items-center w-full h-[600px] 2xl:h-[1000px] tracking-wide">
-          <div className="text-3xl text-center sm:text-4xl lg:text-5xl 2xl:text-6xl font-bold mb-2 font-sans">
+        <div className="absolute top-10 text-white flex flex-col justify-center items-center w-full h-screen tracking-wide">
+          <div className="text-3xl text-center sm:text-4xl lg:text-5xl 2xl:text-8xl font-bold mb-2 2xl:mb-7 font-sans">
             Discover Unforgettable Experience
           </div>
-          <div className="text-xl sm:text-2xl lg:text-3xl 2xl:text-4xl font-semibold font-sans">
+          <div className="text-xl sm:text-2xl lg:text-3xl 2xl:text-6xl font-semibold font-sans">
             Elevate Your Vision Into Reality
           </div>
           <Link href={"/events"}>
-            <button className="mt-5 py-2 px-5 bg-violet-700 rounded-lg text-lg font-quicksand font-semibold tracking-wider hover:bg-white hover:text-violet-700 duration-300">
+            <button className="mt-5 2xl:mt-10 py-2 px-5 2xl:py-4 2xl:px-7 bg-violet-700 rounded-lg text-lg 2xl:text-xl font-quicksand font-semibold tracking-wider hover:bg-white hover:text-violet-700 duration-300">
               Explore
             </button>
           </Link>
