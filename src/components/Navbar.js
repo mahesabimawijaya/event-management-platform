@@ -74,7 +74,7 @@ export default function Navbar() {
         </Link>
         <div className="flex flex-col w-40 md:w-auto space-y-2 mt-10 md:mt-0 md:space-y-0 md:flex-row md:pl-10 md:space-x-5 md:items-center mb-5 md:mb-0">
           <Link href={"/login"}>
-            <button className="bg-violet-600 py-2 px-4 rounded text-white cursor-pointer border border-violet-600 duration-150 hover:bg-white hover:text-violet-600">
+            <button className="bg-violet-600 py-2 px-[27px] md:px-4 rounded text-white cursor-pointer border border-violet-600 duration-150 hover:bg-white hover:text-violet-600">
               Login
             </button>
           </Link>

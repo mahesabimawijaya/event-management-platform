@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "UniFy",
-  description: "Your number 1 event management platform",
+  description: "Your favourite event management platform",
 };
 
 export default function RootLayout({ children }) {
