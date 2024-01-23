@@ -8,7 +8,7 @@ export default function Hero() {
         <div className="relative w-full h-screen z-[-1]">
           <Image
             src={"/hero/hero.jpg"}
-            className="brightness-50 object-cover"
+            className="brightness-50 object-cover object-center"
             fill={true}
             quality={100}
             priority
