@@ -20,7 +20,7 @@ export default function Hero() {
           <div className="text-3xl text-center sm:text-4xl lg:text-5xl 2xl:text-8xl font-bold mb-2 2xl:mb-7 font-sans">
             Discover Unforgettable Experience
           </div>
-          <div className="text-xl sm:text-2xl lg:text-3xl 2xl:text-6xl font-semibold font-sans">
+          <div className="text-xl sm:text-2xl lg:text-3xl 2xl:text-6xl font-semibold font-quicksand">
             Elevate Your Vision Into Reality
           </div>
           <Link href={"/events"}>
