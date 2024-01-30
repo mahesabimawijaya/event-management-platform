@@ -124,6 +124,13 @@ export default function EventDetails({ params }) {
             </button>
           </div>
         </Link>
+        <Link href={`/eventForm`}>
+          <div className="flex">
+            <button className="bg-violet-700 mt-[60px] px-4 text-white rounded-md py-2 font-semibold hidden lg:block">
+              Create Event
+            </button>
+          </div>
+        </Link>
         <div id="review" className="flex flex-col px-5 mt-16">
           <div className="text-lg font-semibold">Review</div>
           <div className="border-t border-t-gray-300 mt-1 pt-4">
