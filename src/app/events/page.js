@@ -6,11 +6,13 @@ import SearchBar from "@/components/SearchBar";
 import useSWR from "swr";
 import Image from "next/image";
 import Link from "next/link";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Path } from "@/context/Path";
+import PaginationControls from "./pagination";
+import NotFound from "@/components/NotFound";
 
-export default function Event() {
-  const { path, setPath } = useContext(Path);
+export default function Event({ searchParams }) {
+  const { path } = useContext(Path);
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
   const { data, error, isLoading } = useSWR(
     `${process.env.NEXT_PUBLIC_API_URL}/${path}`,
@@ -18,10 +20,19 @@ export default function Event() {
   );
   if (error) return <Error />;
   if (isLoading) return <Loading />;
+  if (data.length === 0) return <NotFound />;
 
+  const page = searchParams["page"] ?? "1";
+  const per_page = searchParams["per_page"] ?? "9";
+
+  // mocked, skipped and limited in the real app
+  const start = (Number(page) - 1) * Number(per_page); // 0, 5, 10 ...
+  const end = start + Number(per_page); // 5, 10, 15 ...
+  const entries = data.slice(start, end);
+  console.log(entries);
   return (
     <>
-      <div className="pt-[71px] pb-10">
+      <div className="pt-[71px] pb-10 2xl:h-screen">
         <SearchBar />
         <div
           id="event-primary-container"
@@ -31,8 +42,8 @@ export default function Event() {
             id="event-secondary-container"
             className="flex flex-col space-y-10 md:space-y-0 overflow-x-hidden items-center w-full md:flex-row md:flex-wrap md:justify-center xl:px-20 2xl:px-40"
           >
-            {data.events.map((event, index) => {
-              let date = new Date(event.startDate);
+            {entries.map((event, index) => {
+              let date = new Date(event.start_date);
               date = date.toLocaleDateString();
               return (
                 <Link key={index} href={`/events/${event.id}`}>
@@ -91,6 +102,14 @@ export default function Event() {
                 </Link>
               );
             })}
+          </div>
+          <div id="pagination" className="flex justify-center w-full mt-10">
+            <div className="flex flex-col items-center">
+              <PaginationControls
+                hasNextPage={end < data.length}
+                hasPrevPage={start > 0}
+              />
+            </div>
           </div>
         </div>
       </div>

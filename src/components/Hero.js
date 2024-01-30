@@ -1,20 +1,39 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 
 export default function Hero() {
+  const images = ["/hero/hero.jpg", "/hero/wedding.jpg", "/hero/food.jpg"];
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 5000);
+
+    return () => clearInterval(intervalId);
+  });
+
   return (
     <>
       <div className="pt-16">
         <div className="relative w-full h-screen z-[-1]">
-          <Image
-            src={"/hero/hero.jpg"}
-            className="brightness-50 object-cover object-center"
-            fill={true}
-            quality={100}
-            priority
-            sizes="100vw"
-            alt="hero"
-          />
+          {images.map((image, index) => (
+            <Image
+              key={index}
+              src={image}
+              alt={`Image ${index + 1}`}
+              quality={100}
+              fill
+              priority
+              className={`object-cover object-center opacity-0 brightness-50 transition-opacity duration-1000 ease-in-out ${
+                index === currentImageIndex ? "opacity-100" : ""
+              }`}
+            />
+          ))}
         </div>
         <div className="absolute top-10 text-white flex flex-col justify-center items-center w-full h-screen tracking-wide">
           <div className="text-3xl text-center sm:text-4xl lg:text-5xl 2xl:text-8xl font-bold mb-2 2xl:mb-7 font-sans">
